@@ -8,6 +8,9 @@ The client is built with modern frontend tooling, and the server is powered by N
 ## 📂 Project Structure
 
 
+📂 Client 
+📂 Server
+
 ---
 
 ## 🚀 Getting Started
@@ -19,7 +22,7 @@ cd Highway-Delite
 
 
 
----
+```
 
 ## Client (Frontend)
 
@@ -32,7 +35,7 @@ npm run dev
 
 
 
----
+```
 
 
 ## Server (Backend)
@@ -41,7 +44,7 @@ npm run dev
 .env.example
 ```bash
 
----
+
 ### Setup
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
@@ -54,7 +57,7 @@ cd server
 npm install
 npm run dev
 
----
+```
 
 
 ### Next steps?
