@@ -11,7 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { POST } from "../api";
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext, type User } from "../Context/AppContext";
 import Google from "../assets/google.png";
 import { useGoogleLogin } from "@react-oauth/google";
 
@@ -30,7 +30,7 @@ function Login() {
         email: "",
     });
 
-    const googleLogin = useGoogleLogin({
+    const googleLogin =  useGoogleLogin({
         onSuccess: (tokenResponse) => {
             const { access_token } = tokenResponse;
             if (access_token) {
@@ -38,7 +38,7 @@ function Login() {
 
                 setVerifyingOTP(true);
                 setSendingOTP(true);
-                POST("/auth/google-login", { access_token })
+                POST<{message:string,token:string,user:User}>("/auth/google-login", { access_token })
                     .then((response) => {
                         toast.update(notify, {
                             render: `Google Login Success`,
@@ -126,7 +126,7 @@ function Login() {
 
         const notify = toast.loading("Verifying OTP...");
         try {
-            const response = await POST("/auth/verify-otp", {
+            const response = await POST<{message:string,token:string,user:User}>("/auth/verify-otp", {
                 otp,
                 email: formData.email,
             });
@@ -377,7 +377,7 @@ function Login() {
                             )}
 
                             <Button
-                                onClick={googleLogin}
+                                onClick={() => googleLogin()}
                                 fullWidth
                                 disabled={sendingOTP || verifyingOTP}
                                 variant="contained"
