@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 const app = express();
-const port = 3000;
+const port = 8001;
 import env from 'dotenv';
 import cors from 'cors';
 env.config();
