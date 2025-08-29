@@ -30,7 +30,7 @@ function Login() {
         email: "",
     });
 
-    const googleLogin =  useGoogleLogin({
+    const googleLogin = useGoogleLogin({
         onSuccess: (tokenResponse) => {
             const { access_token } = tokenResponse;
             if (access_token) {
@@ -38,7 +38,7 @@ function Login() {
 
                 setVerifyingOTP(true);
                 setSendingOTP(true);
-                POST<{message:string,token:string,user:User}>("/auth/google-login", { access_token })
+                POST<{ message: string, token: string, user: User }>("/auth/google-login", { access_token })
                     .then((response) => {
                         toast.update(notify, {
                             render: `Google Login Success`,
@@ -126,7 +126,7 @@ function Login() {
 
         const notify = toast.loading("Verifying OTP...");
         try {
-            const response = await POST<{message:string,token:string,user:User}>("/auth/verify-otp", {
+            const response = await POST<{ message: string, token: string, user: User }>("/auth/verify-otp", {
                 otp,
                 email: formData.email,
             });
@@ -211,18 +211,21 @@ function Login() {
             />
 
             <div className="flex-1 h-full flex justify-between p-2 rounded-xl ">
-                <div className="flex-1 justify-center items-center">
-                    <img src={Logo} alt="logo" />
+                <div className="flex-1 justify-center items-center ">
+                    <div className="flex justify-center items-center flex-1 md:items-start flex-col">
+                        <img src={Logo} alt="logo" />
+
+                    </div>
                     <div className="flex justify-center items-center h-full">
-                        <div className="flex w-full h-full self-center justify-center flex-col min-w-[399px] max-w-[399px] items-center gap-4">
-                            <div className="text-start w-full mb-4">
+                        <div className="flex w-full h-full self-center justify-center flex-col md:min-w-[399px] max-w-[399px] items-center gap-4">
+                            <div className=" text-center gap-1 flex flex-col md:text-start  w-full mb-4">
                                 <p className="font-inter font-bold text-3xl">
                                     {mode === "signup" ? "Sign up" : "Sign in"}
                                 </p>
                                 <span className="text-[#969696]">
                                     {mode === "signup"
-                                        ? "Sign up and feature of HD"
-                                        : "Login to access your account"}
+                                        ? "Sign up to enjoy the feature of HD"
+                                        : "Please login to access your account"}
                                 </span>
                             </div>
 
