@@ -53,6 +53,8 @@ SMTP_PASS=ulufsnsm
 JWT_SECRET=HELLO@
 MONGODB_URI=mongodb+srv://Username:Password@cluster0.vef3wic.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
+```
+
 ### Starting The Server
 ```bash
 cd server
