@@ -9,4 +9,4 @@ router.post("/create", verifyUser, createNote);
 router.get("/all", verifyUser, getNotes);
 router.delete("/delete/:id", verifyUser, deleteNote);
 router.put("/update/:id", verifyUser, updateNote);
-module.exports = router;
+export default router

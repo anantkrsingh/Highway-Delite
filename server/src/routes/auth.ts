@@ -10,4 +10,4 @@ router.post("/verify-otp", validateOTPReq, isRequestValidated, verifyOtp);
 router.post("/login", validateLogin, isRequestValidated, login);
 router.post("/google-login", googleLogin);
 
-module.exports = router;
+export default router;

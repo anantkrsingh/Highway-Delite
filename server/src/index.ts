@@ -1,5 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import AuthRoutes from './routes/auth';
+import NotesRoutes from './routes/notes';
 const app = express();
 const port = 8001;
 import env from 'dotenv';
@@ -8,8 +10,8 @@ env.config();
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
+app.use('/api/auth', AuthRoutes);
+app.use('/api/notes', NotesRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello!');
